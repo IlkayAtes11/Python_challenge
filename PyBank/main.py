@@ -1,6 +1,8 @@
 
 import os, csv
 
+
+
 # The total number of months included in the dataset
 
 total_months=0
@@ -22,13 +24,16 @@ dates=[]
 
 # The greatest increase in profits (date and amount) over the entire period
 
-g_increase=0
+g_increase = 0
 
 # The greatest decrease in profits (date and amount) over the entire period
 
 g_decrease=0
 
-csvpath=r"C:\Users\AdminLocal\Desktop\Bootcamp\Python_challenge\PyBank\Resources\budget_data.csv"
+# csvpath=r"C:\Users\AdminLocal\Desktop\Bootcamp\Python_challenge\PyBank\Resources\budget_data.csv"
+
+# csvpath = "Resources/budget_data.csv"
+csvpath = "./Resources/budget_data.csv"
 
 with open(csvpath) as csvfile:
     csvreader= csv.reader(csvfile, delimiter=',')
@@ -45,6 +50,7 @@ with open(csvpath) as csvfile:
        
         total_months=total_months+1
         dates.append(row[0])
+    
   
         total_profit=total_profit+int(row[1])
         
@@ -61,15 +67,28 @@ with open(csvpath) as csvfile:
 average_change=round(int(total_change_in_profit)/(int(total_months)-1),2)
 
 g_increase=max(changes)
+g_increase_index=changes.index(g_increase)
+g_increase_month=dates[g_increase_index]
 g_decrease=min(changes)
 
-x=0
+# create variable of output
+output=(
+f'Finacial Analysis\n'
+f'----------------------------------\n'
+f'Total Months: {total_months}\n'
+f'Total: ${total_profit}\n'
+f'Average Change: ${average_change}\n'
+f'Greatest Increase in Profits: ${g_increase}\n'
+f'Greatest Decrease in Profits: ${g_decrease}\n'
+)
 
-if x==g_increase in changes:
-    print(dates)
+print(output)
 
-print(f'Total Months: {total_months}')
-print(f'Total: ${total_profit}')
-print(f'Average Change: ${average_change}')
-print(f'Greatest Increase in Profits: ${g_increase}')
-print(f'Greatest Decrease in Profits: ${g_decrease}')
+#print(g_increase_month)
+
+# create output and save to analysis folder
+# create path to analysis folder
+outputpath="./analysis/budget_analysis.txt"
+
+with open(outputpath, "w") as textfile:
+    textfile.write(output)

@@ -2,7 +2,7 @@
 
 ## Analysis
 
-![Anlysis Report](./images/PyBank_Analysis.png) 
+![Anlysis Report](C:\Users\AdminLocal\Desktop\Bootcamp\Python_challenge\PyBank\images\PyBank_Analysis.PNG) 
 
 * With these analysis we found that data is consists of 86 months.
 * Total profit at the end of the 86 months is $ 22,564,198.

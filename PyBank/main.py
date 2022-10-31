@@ -1,8 +1,6 @@
 
 import os, csv
 
-
-
 # The total number of months included in the dataset
 
 total_months=0
@@ -30,15 +28,19 @@ g_increase = 0
 
 g_decrease=0
 
-# csvpath=r"C:\Users\AdminLocal\Desktop\Bootcamp\Python_challenge\PyBank\Resources\budget_data.csv"
+# the path to data
 
-# csvpath = "Resources/budget_data.csv"
-csvpath = "./Resources/budget_data.csv"
+csvpath = r"C:\Users\AdminLocal\Desktop\Bootcamp\Python_challenge\PyBank\Resources\budget_data.csv"
+
+# opening and reading the csv file with python
 
 with open(csvpath) as csvfile:
     csvreader= csv.reader(csvfile, delimiter=',')
+
+# reading the header
     csv_header=next(csvreader)
 
+# reading first row out of the loop to get the correct change of profits results over the months
     first_row=next(csvreader)
 
     total_months=total_months+1
@@ -70,6 +72,8 @@ g_increase=max(changes)
 g_increase_index=changes.index(g_increase)
 g_increase_month=dates[g_increase_index]
 g_decrease=min(changes)
+g_decrease_index=changes.index(g_decrease)
+g_decrease_month=dates[g_decrease_index]
 
 # create variable of output
 output=(
@@ -78,16 +82,15 @@ f'----------------------------------\n'
 f'Total Months: {total_months}\n'
 f'Total: ${total_profit}\n'
 f'Average Change: ${average_change}\n'
-f'Greatest Increase in Profits: ${g_increase}\n'
-f'Greatest Decrease in Profits: ${g_decrease}\n'
+f'Greatest Increase in Profits: {g_increase_month}, (${g_increase})\n'
+f'Greatest Decrease in Profits: {g_decrease_month}, (${g_decrease})\n'
 )
 
 print(output)
 
-#print(g_increase_month)
-
 # create output and save to analysis folder
-# create path to analysis folder
+
+    # create path to analysis folder
 outputpath="./analysis/budget_analysis.txt"
 
 with open(outputpath, "w") as textfile:

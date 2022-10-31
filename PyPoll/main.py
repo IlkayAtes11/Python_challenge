@@ -2,6 +2,7 @@ import os, csv
 
 total_votes = 0
 
+# A complete list of candidates who received votes
 candidates = []
 
 c_1 = 0
@@ -18,10 +19,10 @@ with open(csvpath) as csvfile:
 
         total_votes = total_votes + 1
 
-
         if row[2] not in candidates:
             candidates.append(row[2])
 
+# The total number of votes each candidate won
 
         if row[2] == candidates[0]:
             c_1 = c_1 + 1
@@ -30,18 +31,20 @@ with open(csvpath) as csvfile:
         elif row[2] == candidates[2]:
             c_3 = c_3 +1
 
-
+# The percentage of votes each candidate won
 percentage_1 = "%.3f%%" % ((c_1/total_votes)*100)
 percentage_2 = "%.3f%%" % ((c_2/total_votes)*100)
 percentage_3 = "%.3f%%" % ((c_3/total_votes)*100)
 
 votes = [c_1, c_2, c_3]
 
+# The winner of the election based on popular vote.
+
 winner = max(votes)
 
 winner_index = votes.index(winner)
 
-# create variable of output
+# create output and save to analysis folder
 
 output =(
 f'Election Results\n'
@@ -58,15 +61,9 @@ f'-------------------------\n'
 
 print(output)
 
+# create path to analysis folder
+
 outputpath = r"C:\Users\AdminLocal\Desktop\Bootcamp\Python_challenge\PyPoll\analysis\poll_analysis.txt"
 
 with open(outputpath, "w") as outputfile:
     outputfile.write(output)
-
-# A complete list of candidates who received votes
-
-# The percentage of votes each candidate won
-
-# The total number of votes each candidate won
-
-# The winner of the election based on popular vote.

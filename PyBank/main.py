@@ -91,7 +91,8 @@ print(output)
 # create output and save to analysis folder
 
     # create path to analysis folder
-outputpath="./analysis/budget_analysis.txt"
+
+outputpath = r"C:\Users\AdminLocal\Desktop\Bootcamp\Python_challenge\PyBank\analysis\budget_analysis.txt"
 
 with open(outputpath, "w") as textfile:
     textfile.write(output)
